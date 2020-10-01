@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { getMessage } from "../data/message"
+import Pagination from "../components/pagination"
 import QuizCard from "../components/QuizCard"
 
 const QuizzesContainer = ({
