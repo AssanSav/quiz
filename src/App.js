@@ -1,8 +1,9 @@
-import React from 'react';
-import './App.css';
+import React, { useEffect } from "react";
+import QuizzesContainer from "./containers/QuizzesContainer";
+import { quizzes } from "./data/quizzes";
+import "./App.css";
 
 const App = () => {
-
   const shuffleArray = (array) => {
     for (var i = array.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
@@ -25,10 +26,24 @@ const App = () => {
     return result;
   };
 
+  let htmlQuizzes = shuffleQuizzes(quizzes[0]);
+  let cssQuizzes = shuffleQuizzes(quizzes[1]);
 
-  return (  );
-}
- 
+  useEffect(() => {
+    shuffleQuizzes(quizzes[0]);
+    shuffleQuizzes(quizzes[1]);
+  });
+
+  return (
+    <div className="App">
+      <QuizzesContainer
+        htmlQuizzes={htmlQuizzes}
+        cssQuizzes={cssQuizzes}
+        htmlTitle={quizzes[0].title}
+        cssTitle={quizzes[1].title}
+      />
+    </div>
+  );
+};
+
 export default App;
-
-
